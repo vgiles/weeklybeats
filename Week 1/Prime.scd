@@ -1,20 +1,19 @@
-/* What I want to do:
-1. Long periods of blocked noise. |||||||||||||| (sequence decided by prime numbers up and down, 2, 3, 5, 7, 11, 13, 17, 19, 23, 19, 17, 13, 11, 7, 5, 3, 2.
+/* Prime: Vincent Giles (2015) [WeeklyBeats 2016]
+1. Long periods of blocked noise.
+
+(sequence decided by prime numbers up and down, 2, 3, 5, 7, 11, 13, 17, 19, 23, 19, 17, 13, 11, 7, 5, 3, 2.
+
 2. Pauses between noise blocks: the same prime number sequence
 3. This happens on top of a bed of "jittery" noise.
 4. Piece is finished after the final two second pause (5.9minutes)
--- Then I need to record the whole thing. Easy!
 */
 
 s.boot;
 s.kill;
 
-v = Array.fill(19, {Rand(400, 800).collect;});
-v.postln;
-
 // Synthesis Definitions
-// Blippy Fun
 
+// NoisyBlippySynthyThing
 (
 SynthDef.new(\synthBed, {
 	arg freq1=500, freq2=552, freq3=900, freq4=1274, dens1=45, time=2;
@@ -83,7 +82,7 @@ q.stop;
 s.makeGui;
 
 
-// Here is the piece scheduled
+// Here are some triggers.
 
 x = Synth.new(\synthBed, [\dens1, rrand(15, 50), \freq1, rrand(200, 1200), \freq2, rrand(300, 1000), \freq3, rrand(240, 2500), \freq4, rrand(1000, 6000), \time, 2]);
 
@@ -91,8 +90,7 @@ y = Synth.new(\NoiseWall, [\cutoff, rrand(340, 900), \resonance, rrand(0.3, 2.4)
 
 
 
-/*
-In here I will want to iterate over the list of integers, changing the time arguments each time.*/
+
 
 
 
