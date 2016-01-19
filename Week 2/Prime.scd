@@ -9,7 +9,7 @@
 */
 
 s.boot;
-s.kill;
+s.quit;
 
 // Synthesis Definitions
 
