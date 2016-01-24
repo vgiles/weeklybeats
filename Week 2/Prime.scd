@@ -1,4 +1,4 @@
-/* Prime: Vincent Giles (2015) [WeeklyBeats 2016]
+/* Prime: Vincent Giles (2016) [WeeklyBeats 2016]
 1. Long periods of blocked noise.
 
 (sequence decided by prime numbers up and down, 2, 3, 5, 7, 11, 13, 17, 19, 23, 19, 17, 13, 11, 7, 5, 3, 2.
