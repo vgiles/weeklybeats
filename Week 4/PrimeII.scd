@@ -102,16 +102,16 @@ q = Pbind (
 // Variables and Arrays
 var randomDurs, randomRests, pseqDur, vSaw, pans3, pans4, lfFreq, density, res;
 
-randomDurs = Array.rand(42, 2, 29);
-randomRests = Array.rand(42, 2, 29);
+randomDurs = Array.rand(21, 2, 29);
+randomRests = Array.rand(21, 2, 29);
 pseqDur = randomDurs ++ randomRests;
 pseqDur = pseqDur.scramble;
-vSaw = Array.rand(42, 0.01, 2.04);
-pans3 = Array.rand(42, -1.0, 1.0);
-pans4 = Array.rand(42, -1.0, 1.0);
-lfFreq = Array.rand(42, 50, 500);
-density = Array.rand(42, 5, 400);
-res = Array.rand(42, 5, 500);
+vSaw = Array.rand(21, 0.01, 2.04);
+pans3 = Array.rand(21, -1.0, 1.0);
+pans4 = Array.rand(21, -1.0, 1.0);
+lfFreq = Array.rand(21, 50, 500);
+density = Array.rand(21, 5, 400);
+res = Array.rand(21, 5, 500);
 
 
 // Sequencing
@@ -134,16 +134,16 @@ p = Pbind (
 // Variables and Arrays
 var randomDurs, randomRests, pseqDur, vSaw, pans3, pans4, lfFreq, density, res;
 
-randomDurs = Array.rand(42, 2, 29);
-randomRests = Array.rand(42, 2, 29);
+randomDurs = Array.rand(21, 2, 29);
+randomRests = Array.rand(21, 2, 29);
 pseqDur = randomDurs ++ randomRests;
 pseqDur = pseqDur.scramble;
-vSaw = Array.rand(42, 0.01, 2.04);
-pans3 = Array.rand(42, -1.0, 1.0).postln;
-pans4 = Array.rand(42, -1.0, 1.0);
-lfFreq = Array.rand(42, 50, 500);
-density = Array.rand(42, 5, 400);
-res = Array.rand(42, 5, 500);
+vSaw = Array.rand(21, 0.01, 2.04);
+pans3 = Array.rand(21, -1.0, 1.0).postln;
+pans4 = Array.rand(21, -1.0, 1.0);
+lfFreq = Array.rand(21, 50, 500);
+density = Array.rand(21, 5, 400);
+res = Array.rand(21, 5, 500);
 
 
 // Sequencing
