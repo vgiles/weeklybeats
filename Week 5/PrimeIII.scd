@@ -10,9 +10,10 @@ Use lower values for longer durations (ie. 'larger numbers = shorter durations, 
 */
 
 s.boot;
+s.freeAll;
 
-s.meter;
-
+s.meter.free;
+s.plotTree;
 s.makeGui;
 
 // s.waitForBoot({ // Add this last to control the piece.
@@ -34,7 +35,8 @@ SynthDef.new(
 		var signal, envelope;
 
 		envelope = EnvGen.kr(Env.perc(0.01, percLen, amp, curve: \exp), doneAction: 2);
-		signal = {SinOsc.ar(baseFreq * freqMod, 0, 0.8, 1/sinMul) ! sinMul}.sum;
+		signal = {
+			SinOsc.ar(baseFreq * freqMod, 0, 0.8, 1/sinMul) ! sinMul}.sum;
 		Out.ar([0, 1], signal * envelope);
 	}
 ).add
