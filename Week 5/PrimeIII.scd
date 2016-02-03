@@ -25,7 +25,7 @@ s.makeGui;
 SynthDef.new(
 	\bell, {
 		| // Arguments
-		baseFreq = 50,
+		baseFreq = 1000,
 		amp = 0.7,
 		percLen = 0.4,
 		freqMod = 0.3,
@@ -36,10 +36,15 @@ SynthDef.new(
 
 		envelope = EnvGen.kr(Env.perc(0.01, percLen, amp, curve: \exp), doneAction: 2);
 		signal = {
-			SinOsc.ar(baseFreq * freqMod, 0, 0.8, 1/sinMul) ! sinMul}.sum;
+			SinOsc.ar(baseFreq * freqMod, 0, 1, 0)
+		};
 		Out.ar([0, 1], signal * envelope);
 	}
 ).add
 )
+
+t = Synth.new(\bell, [\percLen, 4, \amp, 1]);
+
+t.play;
 
 
