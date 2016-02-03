@@ -20,16 +20,24 @@ s.makeGui;
 //	var masterSequence;
 
 /* bell synth definition */
+(
 SynthDef.new(
-	"bell", {
+	\bell, {
 		| // Arguments
 		baseFreq = 50,
 		amp = 0.7,
-		percLen = 0.4
+		percLen = 0.4,
+		freqMod = 0.3,
+		sinMul = 3
 		|
 
-		var signal, envelope, frequency;
+		var signal, envelope;
 
 		envelope = EnvGen.kr(Env.perc(0.01, percLen, amp, curve: \exp), doneAction: 2);
+		signal = {SinOsc.ar(baseFreq * freqMod, 0, 0.8, 1/sinMul) ! sinMul}.sum;
+		Out.ar([0, 1], signal * envelope);
+	}
+).add
+)
 
 
