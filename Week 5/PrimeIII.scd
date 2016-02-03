@@ -5,4 +5,31 @@ Prime III - Vincent Giles (2016) [Weeklybeats 2016]
 --
 Use these values as a set of rhythms to be randomised to create "grain-like" rhythmic patterns.
 --
+Use lower values for longer durations (ie. 'larger numbers = shorter durations, lower numbers = larger durations')
+"percussion" sounds.
 */
+
+s.boot;
+
+s.meter;
+
+s.makeGui;
+
+// s.waitForBoot({ // Add this last to control the piece.
+
+//	var masterSequence;
+
+/* bell synth definition */
+SynthDef.new(
+	"bell", {
+		| // Arguments
+		baseFreq = 50,
+		amp = 0.7,
+		percLen = 0.4
+		|
+
+		var signal, envelope, frequency;
+
+		envelope = EnvGen.kr(Env.perc(0.01, percLen, amp, curve: \exp), doneAction: 2);
+
+
