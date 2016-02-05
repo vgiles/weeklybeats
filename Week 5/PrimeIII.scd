@@ -62,18 +62,22 @@ rhy1.postln;
 
 ~percussion = Pbind (
 	\instrument, \bell,
-	\dur, Pseq(rhy1, 5, 0), // rhy1 needs to be an array of durations
-	\percLen, Pseq(rhy1, 5, 0),
+	\dur, Pseq(rhy1, 2, 0), // rhy1 needs to be an array of durations
+	\percLen, Pseq(rhy1, 2, 0),
 	\amp, 0.8,
 	\freqMod, rrand(0.5, 9.0),
 	\sinMul, rrand(0.2, 50.0),
 	\panPos, rrand(-1.0, 1.0),
 	\oscs, rrand(4, 12)
-)
+);
+
 
 
 )
 ~percussion.play;
+~percussion.rest;
+
+
 s.meter;
 
 
