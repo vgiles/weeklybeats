@@ -113,13 +113,18 @@ s.waitForBoot(
 				s.sync; // wait for everything to be loaded.
 
 				masterSequence = Task({
+
+					// 2, 3, 5, 7, 11, 7, 5, 3, 2  -- Prime Number Series for Form of bells
+					// 5, 7, 11, 13 -- Prime Number Series for Form of Low Swells
+					0.1.wait;
+
 					// Dynamic activation of low resonant bell
 					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
 					Pdefn(\swellsinMul, rrand(0.2, 50.0));
 					Pdefn(\swellpercLen, rrand(1.0, 5.0));
 					~lowSwell.play;
 
-					20.wait;
+					2.wait;
 
 					// Setup for dynamically changing timbre of the bell.
 
@@ -129,7 +134,7 @@ s.waitForBoot(
 					~percussion.play;
 
 
-					4.wait;
+					3.wait; // 5
 
 					// Setup for dynamically changing timbre of the bell.
 
@@ -138,8 +143,29 @@ s.waitForBoot(
 					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
 					~percussion.play;
 
+					// Dynamic activation of low resonant bell
+					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
+					Pdefn(\swellsinMul, rrand(0.2, 50.0));
+					Pdefn(\swellpercLen, rrand(1.0, 5.0));
+					~lowSwell.play;
 
-					8.wait;
+					5.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					7.wait; // 7
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
 					// Dynamic activation of low resonant bell
 
 					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
@@ -147,7 +173,63 @@ s.waitForBoot(
 					Pdefn(\swellpercLen, rrand(1.0, 5.0));
 					~lowSwell.play;
 
-					12.wait;
+					11.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					// Dynamic activation of low resonant bell
+
+					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
+					Pdefn(\swellsinMul, rrand(0.2, 50.0));
+					Pdefn(\swellpercLen, rrand(1.0, 5.0));
+					~lowSwell.play;
+
+					7.wait;
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					5.wait; // (not quite 13)
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					// Dynamic activation of low resonant bell
+
+					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
+					Pdefn(\swellsinMul, rrand(0.2, 50.0));
+					Pdefn(\swellpercLen, rrand(1.0, 5.0));
+					~lowSwell.play;
+
+					3.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					2.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
 
 					s.freeAll;
 
