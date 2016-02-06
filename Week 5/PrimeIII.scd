@@ -91,8 +91,8 @@ s.waitForBoot(
 
 				~percussion = Pbind (
 					\instrument, \bell,
-					\dur, Pseq(rhy1, 2, 0), // rhy1 needs to be an array of durations
-					\percLen, Pseq(rhy1, 2, 0),
+					\dur, Pseq(rhy1, 4, 0), // rhy1 needs to be an array of durations
+					\percLen, Pseq(rhy1, 4, 0),
 					\amp, 0.8,
 					\freqMod, Pdefn(\bellFreqMod, rrand(0.5, 9.0)),
 					\sinMul, Pdefn(\bellsinMul, rrand(0.2, 50.0)),
