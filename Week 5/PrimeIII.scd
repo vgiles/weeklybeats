@@ -9,6 +9,9 @@ Use lower values for longer durations (ie. 'larger numbers = shorter durations, 
 "percussion" sounds.
 */
 
+
+// Select all (cmd-a) and execute (cmd-return) for the piece to work.
+
 s.boot;
 
 s.makeGui;
@@ -126,7 +129,7 @@ s.waitForBoot(
 
 					2.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -136,14 +139,15 @@ s.waitForBoot(
 
 					3.wait; // 5
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
 					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
 					~percussion.play;
 
-					// Dynamic activation of low resonant bell
+					// Low Swell
+
 					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
 					Pdefn(\swellsinMul, rrand(0.2, 50.0));
 					Pdefn(\swellpercLen, rrand(1.0, 5.0));
@@ -151,7 +155,7 @@ s.waitForBoot(
 
 					5.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -159,14 +163,14 @@ s.waitForBoot(
 					~percussion.play;
 
 					7.wait; // 7
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
 					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
 					~percussion.play;
 
-					// Dynamic activation of low resonant bell
+					// Low Swell
 
 					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
 					Pdefn(\swellsinMul, rrand(0.2, 50.0));
@@ -175,14 +179,14 @@ s.waitForBoot(
 
 					11.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
 					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
 					~percussion.play;
 
-					// Dynamic activation of low resonant bell
+					// Low Swell
 
 					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
 					Pdefn(\swellsinMul, rrand(0.2, 50.0));
@@ -190,7 +194,7 @@ s.waitForBoot(
 					~lowSwell.play;
 
 					7.wait;
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -199,14 +203,14 @@ s.waitForBoot(
 
 					5.wait; // (not quite 13)
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
 					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
 					~percussion.play;
 
-					// Dynamic activation of low resonant bell
+					// Low Swell
 
 					Pdefn(\swellFreqMod, rrand(0.5, 1.3));
 					Pdefn(\swellsinMul, rrand(0.2, 50.0));
@@ -215,7 +219,7 @@ s.waitForBoot(
 
 					3.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -224,7 +228,7 @@ s.waitForBoot(
 
 					2.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -233,7 +237,7 @@ s.waitForBoot(
 
 					3.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -242,7 +246,7 @@ s.waitForBoot(
 
 					5.wait; // (not quite 13)
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -251,7 +255,7 @@ s.waitForBoot(
 
 					3.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
@@ -260,7 +264,7 @@ s.waitForBoot(
 
 					2.wait;
 
-					// Setup for dynamically changing timbre of the bell.
+					// Percussion
 
 					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
 					Pdefn(\bellsinMul, rrand(0.2, 50.0));
