@@ -273,12 +273,12 @@ s.waitForBoot(
 
 					10.wait;
 
-					s.freeAll;
-
 					masterSequence.stop;
 				});
 
 				1.wait;
+
+				s.freeAll;
 
 				masterSequence.start;
 			)
