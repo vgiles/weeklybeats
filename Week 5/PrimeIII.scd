@@ -231,6 +231,44 @@ s.waitForBoot(
 					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
 					~percussion.play;
 
+					3.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					5.wait; // (not quite 13)
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					3.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					2.wait;
+
+					// Setup for dynamically changing timbre of the bell.
+
+					Pdefn(\bellFreqMod, rrand(0.5, 9.0));
+					Pdefn(\bellsinMul, rrand(0.2, 50.0));
+					Pdefn(\bellpanPos, rrand(-1.0, 1.0));
+					~percussion.play;
+
+					10.wait;
+
 					s.freeAll;
 
 					masterSequence.stop;
