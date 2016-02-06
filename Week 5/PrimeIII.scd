@@ -278,8 +278,6 @@ s.waitForBoot(
 
 				1.wait;
 
-				s.freeAll;
-
 				masterSequence.start;
 			)
 		}.start;
