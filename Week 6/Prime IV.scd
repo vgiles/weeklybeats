@@ -27,7 +27,7 @@ s.boot;
 
 			var signal, freqEnv, envelope; // freqEnv = frequency glide, envelope = envgen.
 
-			freqEnv = EnvGen.ar(XLine(freq1, freq2, slideDur, 0.8), doneAction: 2);
+			freqEnv = EnvGen.ar(XLine.kr(freq1, freq2, slideDur, 0.8), doneAction: 2);
 			signal = {
 				Saw.ar(baseFreq * SinOsc.ar(freqEnv, 0.5, 0.5, 0), 0, 0.5, 0);
 			}
@@ -36,4 +36,19 @@ s.boot;
 			Out.ar([0, 1], signal * envelope);
 		}
 	)
+)
+
+(
+	SynthDef.new( // low frequency thing
+	{
+		|
+		freq3 = 50, // use prime number pairs for frequency cutoff
+		freq4 = 55, // second of the prime number pairs
+		panPos2 = 0.0,
+		|
+
+		var noiseSig, filter, noiseEnv;
+
+	}
+)
 )
