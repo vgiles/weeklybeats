@@ -13,18 +13,22 @@ This will be the final in the series of prime number SuperCollider studies.
 s.boot;
 
 (
-	SynthDef.new(
+	SynthDef.new( // high frequency "bell" like things.
 		\slideBell,
 		{
 			|
-			freq1 = 400,
-			freq2 = 500,
-			panPos1 = 0.0,
-			slideDur = lrand(20, 300)
+			freq1 = 400, // starting frequency
+			freq2 = 500, // destination frequency
+			baseFreq1 = 200, // initial frequency
+			panPos1 = 0.0, // pan position
+			slideDur = lrand(20, 300) // duration of slide
 			|
 
-			var signal, envelope1;
+			var signal, freqEnv, envelope; // freqEnv = frequency glide, envelope = envgen.
 
+			signal = {
+				SinOsc.ar(baseFreq * SinOsc.ar(freqEnv, 0.5, 0.5, 0), 0, 0.5, 0);
+			}
 
 
 		}
