@@ -55,7 +55,7 @@ s.boot;
 				Crackle.ar(Sin.kr(1.0, 2.0, 3), 0.5, 0.5);
 			}
 			filter = BBandPass.ar(noiseSig, XLine(freq3, freq4, noiseDur, 0.8));
-			noiseEnv = EnvGen.ar(Env.perc())
+			noiseEnv = EnvGen.ar(Env.perc()); // make an envelope that is respondant to a pseq set of durations.
 		}
 	)
 )
