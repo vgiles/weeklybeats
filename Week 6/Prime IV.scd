@@ -39,16 +39,25 @@ s.boot;
 )
 
 (
-	SynthDef.new( // low frequency thing
-	{
-		|
-		freq3 = 50, // use prime number pairs for frequency cutoff
-		freq4 = 55, // second of the prime number pairs
-		panPos2 = 0.0,
-		|
+	SynthDef.new(
+		\noiseStuff // low frequency thing
+		{
+			|
+			freq3 = 50, // use prime number pairs for frequency cutoff
+			freq4 = 55, // second of the prime number pairs
+			noiseDur = 12,
+			panPos2 = 0.0
+			|
 
-		var noiseSig, filter, noiseEnv;
+			var noiseSig, filter, noiseEnv;
 
-	}
+			noiseSig = {
+				Crackle.ar(Sin.kr(1.0, 2.0, 3), 0.5, 0.5);
+			}
+			filter = BBandPass.ar(noiseSig, XLine(freq3, freq4, noiseDur, 0.8));
+		}
+	)
 )
-)
+
+
+
