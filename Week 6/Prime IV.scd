@@ -46,7 +46,9 @@ s.boot;
 			freq3 = 50, // use prime number pairs for frequency cutoff
 			freq4 = 55, // second of the prime number pairs
 			noiseDur = 12,
-			panPos2 = 0.0
+			panPos2 = 0.0,
+			percDur = 7,
+			percAtk = 0.1
 			|
 
 			var noiseSig, filter, noiseEnv;
@@ -55,7 +57,8 @@ s.boot;
 				Crackle.ar(Sin.kr(1.0, 2.0, 3), 0.5, 0.5);
 			}
 			filter = BBandPass.ar(noiseSig, XLine(freq3, freq4, noiseDur, 0.8));
-			noiseEnv = EnvGen.ar(Env.perc()); // make an envelope that is respondant to a pseq set of durations.
+			noiseEnv = EnvGen.ar(Env.perc(perkAtk, percDur, 0.8, -8)); // percussion sound
+			Out.ar([0, 1], filter * noiseEnv);
 		}
 	)
 )
