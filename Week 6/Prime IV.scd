@@ -1,7 +1,7 @@
 /*
 Prime IV - Vincent Giles (2016) [For WeeklyBeats2016]
 ****
-This piece will use prime number series as the frequency envelopes for a series of additive synthetic percussive sounds. 
+This piece will use prime number series as the frequency envelopes for a series of additive synthetic percussive sounds.
 Additionally, these synthetic percussive sounds will be interjected with a noise, which again uses the prime number series to modify
 a frequency cutoff.
 ****
@@ -21,26 +21,26 @@ s.boot;
 			freq2 = 500, // destination frequency
 			baseFreq1 = 200, // initial frequency
 			panPos1 = 0.0, // pan position
-			slideDur = exprand(20, 300), // duration of slide
-			percRel = exprand(1.0, 8.0)
+			slideDur = 50, // duration of slide
+			percRel = 3.0,
+		    baseFreq = 500
 			|
 
 			var signal, freqEnv, envelope; // freqEnv = frequency glide, envelope = envgen.
 
-			freqEnv = EnvGen.ar(XLine.kr(freq1, freq2, slideDur, 0.8), doneAction: 2);
-			signal = {
-				Saw.ar(baseFreq * SinOsc.ar(freqEnv, 0.5, 0.5, 0), 0, 0.5, 0);
-			}
+
+			freqEnv = EnvGen.ar(XLine.ar(freq1, freq2, slideDur, 0.8), doneAction: 2);
 			envelope = EnvGen.ar(Env.perc(0.01, percRel, 0.8, -8), doneAction: 2);
+			signal = Saw.ar(baseFreq, 0, 0.5, 0);
 			signal = Pan2.ar(signal, panPos1, 1);
 			Out.ar([0, 1], signal * envelope);
-		}
+		};
+		)
 	)
-)
 
 (
 	SynthDef.new(
-		\noiseStuff // low frequency thing
+		\funNoise, // low frequency thing
 		{
 			|
 			freq3 = 50, // use prime number pairs for frequency cutoff
@@ -53,15 +53,16 @@ s.boot;
 
 			var noiseSig, filter, noiseEnv;
 
-			noiseSig = {
-				Crackle.ar(Sin.kr(1.0, 2.0, 3), 0.5, 0.5);
-			}
-			filter = BBandPass.ar(noiseSig, XLine(freq3, freq4, noiseDur, 0.8));
-			noiseEnv = EnvGen.ar(Env.perc(perkAtk, percDur, 0.8, -8)); // percussion sound
+			noiseSig = Crackle.ar(SinOsc.ar(1.0, 2.0, 3), 0.5, 0.5);
+			filter = BBandPass.ar(noiseSig, XLine.kr(freq3, freq4, noiseDur, 0.8, doneAction: 2));
+			noiseEnv = EnvGen.kr(Env.perc(percAtk, percDur, 0.8, -8), doneAction: 2); // percussion sound
 			Out.ar([0, 1], filter * noiseEnv);
-		}
+		};
+		)
 	)
-)
+
+x = Synth.new(\funNoise, [\percAtk, rrand(0.1, 2.0), \percDur, rrand(2, 5)]);
+
 
 
 
