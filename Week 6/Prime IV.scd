@@ -16,7 +16,7 @@ s.makeGui;
 s.waitForBoot(
 	{
 		// set global variables (for pbinds etc)
-		var masterSequence;
+		var masterSequence, bellrhy, noiserhy;
 
 		Task {
 
@@ -73,13 +73,28 @@ s.waitForBoot(
 		).add
 	// Here are the Pbinds
 					~sweepbell = Pbind (
+						\instrument, \sweepBell,
+						\dur, Pseq(bellrhy, 3, 0),
+						\baseFreq, rrand(30, 300),
+						\baseFreq1, Pdefn(\bellBaseF1, rrand(40, 200)),
+						\freq1, Pdefn(\modFreq1, rrand(100, 500)),
+						\freq2, Pdefn(\modFreq2, rrand(200, 700)),
+						\panPos1, Pdefn(\bellPan, exprand(-1.0, 1.0)),
+						\slideDur, Pdefn(\bellSlide, rrand(4, 400)),
+						\percRel, Pseq(bellrhy), 3, 0),
+				);
+
+				~noise = Pbind (
+					\instrument, \funNoise,
+					\dur, Pseq(noiserhy, 1, 0),
 
 
-x = Synth.new(\funNoise, [\percAtk, rrand(0.1, 2.0), \percDur, rrand(2, 5), \freq3, exprand(60, 1000), \freq4, exprand(60, 2000)]);
-t = Synth.new(\slideBell, [\freq1, exprand(20, 150), \freq2, exprand(50, 400), \baseFreq1, exprand(600, 2000), \slideDur, rrand(40, 200), \percRel, rrand(0.2, 2.0), \panPos1, rrand(-1.0, 1.0)]);
+
+/*x = Synth.new(\funNoise, [\percAtk, rrand(0.1, 2.0), \percDur, rrand(2, 5), \freq3, exprand(60, 1000), \freq4, exprand(60, 2000)]);
+t = Synth.new(\slideBell, [\freq1, exprand(20, 150), \freq2, exprand(50, 400), \baseFreq1, exprand(600, 2000), \slideDur, rrand(40, 200), \percRel, rrand(0.2, 2.0), \panPos1, rrand(-1.0, 1.0)]);*/
 
 
 
 
 
-{ SinOsc.ar(80 * XLine.kr(400, 800, 13, 0.8, 0, doneAction: 2), 0, 0.8, 0)}.play;
+
