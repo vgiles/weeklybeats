@@ -53,8 +53,8 @@ s.waitForBoot(
 						signal = FreeVerb.ar(signal, 0.6, 0.2, 0.2, 0.8, 0);
 						sig2 = Pan2.ar(signal, panPos1, 1);
 						Out.ar([0, 1], sig2 * envelope);
-					};
-				).add
+					}
+				).add;
 
 
 
@@ -73,16 +73,18 @@ s.waitForBoot(
 
 						var noiseSig, filter, noiseEnv; // local variables
 
-						noiseSig = Crackle.ar(SinOsc.kr(0.2, 0, 0.9, 1), SinOsc.kr(0.01, 0.5, 0.5, 0), Saw.ar(Crackle.kr(SinOsc.kr(1, 0, 0.8, 0), 0.3, 0));
+						noiseSig = Crackle.ar(SinOsc.kr(0.2, 0, 0.9, 1), SinOsc.kr(0.01, 0.5, 0.5, 0), Saw.ar(Crackle.kr(SinOsc.kr(1, 0, 0.8, 0), 0.3, 0)));
 							filter = BBandPass.ar(noiseSig, Line.kr(freq3, freq4, noiseDur, 0.8, doneAction: 2));
 							noiseEnv = EnvGen.ar(Env.perc(percAtk, percDur, 0.9, -4), doneAction: 2); // percussion sound
 							Out.ar([0, 1], filter * noiseEnv);
-						};
-					).add
+					}
+
+
+				).add;
 
 					// Here are the Pbinds
 					~sweepbell = Pbind (
-						\instrument, \sweepBell,
+						\instrument, \slideBell,
 						\dur, Pseq(bellrhy, 3, 0),
 						\baseFreq, rrand(30, 300),
 						\baseFreq1, Pdefn(\bellBaseF1, rrand(40, 200)),
@@ -90,8 +92,9 @@ s.waitForBoot(
 						\freq2, Pdefn(\modFreq2, rrand(200, 700)),
 						\panPos1, Pdefn(\bellPan, exprand(-1.0, 1.0)),
 						\slideDur, Pdefn(\bellSlide, rrand(0.1, 2.0)),
-						\percRel, Pseq(bellrhy2), 3, 0),
-				);
+						\percRel, Pseq(bellrhy2, 3, 0));
+
+
 
 				~noise = Pbind (
 					\instrument, \funNoise,
@@ -99,7 +102,8 @@ s.waitForBoot(
 					\freq4, Pdefn(\noiseFreq2, rrand(100, 1000)),
 					\noiseDur, Pseq(noiserhy, 1, 0),
 					\percDur, Pseq(noiserhy, 1, 0),
-					\percAtk, Pdefn(\percAtk, rrand(0.1, 2.0)),
+					\percAtk, Pdefn(\percAtk, rrand(0.1, 2.0))
+
 				);
 				s.sync;
 				// 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2
