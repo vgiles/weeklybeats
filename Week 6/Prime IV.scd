@@ -71,6 +71,7 @@ s.waitForBoot(
 			Out.ar([0, 1], filter * noiseEnv);
 		};
 		).add
+
 	// Here are the Pbinds
 					~sweepbell = Pbind (
 						\instrument, \sweepBell,
@@ -80,13 +81,24 @@ s.waitForBoot(
 						\freq1, Pdefn(\modFreq1, rrand(100, 500)),
 						\freq2, Pdefn(\modFreq2, rrand(200, 700)),
 						\panPos1, Pdefn(\bellPan, exprand(-1.0, 1.0)),
-						\slideDur, Pdefn(\bellSlide, rrand(4, 400)),
+						\slideDur, Pdefn(\bellSlide, rrand(0.1, 2.0)),
 						\percRel, Pseq(bellrhy), 3, 0),
 				);
 
 				~noise = Pbind (
 					\instrument, \funNoise,
 					\dur, Pseq(noiserhy, 1, 0),
+					\freq3, Pdefn(\noiseFreq1, rrand(100, 600)),
+					\freq4, Pdefn(\noiseFreq2, rrand(100, 1000)),
+					\noiseDur, Pseq(noiserhy, 1, 0),
+					\percDur, Pseq(noiserhy, 1, 0),
+					\percAtk, Pdefn(\percAtk, rrand(0.1, 2.0)),
+				);
+				s.sync;
+
+				masterSequence = Task({
+
+
 
 
 
