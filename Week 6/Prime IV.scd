@@ -23,7 +23,7 @@ s.waitForBoot(
 		);
 		bellrhy = rhythm1.scramble;
 		bellrhy2 = bellrhy.scramble;
-		noiserhy = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2];
+		noiserhy = [2, Rest(2), 3, Rest(3), 5, Rest(5), 7, Rest(7), 11, Rest(11), 13, Rest(13), 17, Rest(17), 19, Rest(19), 23, Rest(23), 29, Rest(29), 31, Rest(31), 37, Rest(37), 41, Rest(41), 37, Rest(37), 31, Rest(31), 29, Rest(29), 23, Rest(23), 19, Rest(19), 17, Rest(17), 13, Rest(13), 11, Rest(11), 7, Rest(7), 5, Rest(5), 3, Rest(3), 2];
 		rhythm1.postln;
 		bellrhy.postln;
 		bellrhy2.postln;
@@ -50,7 +50,7 @@ s.waitForBoot(
 
 						var signal, freqEnv, envelope, sig2; // local def variables
 						freqEnv = Line.kr(freq1, freq2, slideDur, 0.8, doneAction: 2);
-						signal = SinOsc.ar(baseFreq1 * freqEnv, 0, 0.8, SinOsc.ar(baseFreq1, freqEnv, 0));
+						signal = SinOsc.ar(baseFreq1 * freqEnv, 0, 0.8, SinOsc.ar(baseFreq, freqEnv, 0));
 						envelope = EnvGen.kr(Env.perc(0.001, percRel, 1, -4), doneAction: 2);
 						// signal = ;
 						sig2 = Pan2.ar(signal * envelope, panPos1, 1);
@@ -68,17 +68,18 @@ s.waitForBoot(
 						freq3 = 50, // use prime number pairs for frequency cutoff
 						freq4 = 55, // second of the prime number pairs
 						noiseDur = 12,
-						panPos2 = 0.0,
 						percDur = 7,
 						percAtk = 0.9
 						|
 
 						var noiseSig, filter, noiseEnv; // local variables
 
-						noiseSig = Crackle.ar(SinOsc.ar(0.2, 0, 0.9, 1), SinOsc.ar(0.01, 0.5, 0.5, 0), Saw.ar(Crackle.kr(SinOsc.ar(1, 0, 0.8, 0), 0.3, 0)));
-						filter = BBandPass.ar(noiseSig, Line.kr(freq3, freq4, noiseDur, 0.8, doneAction: 2));
+						noiseSig = Crackle.ar(SinOsc.ar(0.8, 0, 0.9, 1), SinOsc.ar(0.01, 0.5, 0.5, 1), Saw.ar(Crackle.ar(SinOsc.ar(20, 0, 0.8, 1), 0.3, 0)));
 						noiseEnv = EnvGen.ar(Env.perc(percAtk, percDur, 0.9, -4), doneAction: 2); // percussion sound
-						Out.ar([0, 1], filter * noiseEnv);
+		                noiseSig = noiseSig * noiseEnv;
+						filter = BBandPass.ar(noiseSig, Line.kr(freq3, freq4, noiseDur, 0.8, doneAction: 2));
+
+						Out.ar([0, 1], filter);
 					}
 
 
@@ -89,11 +90,11 @@ s.waitForBoot(
 					\instrument, \slideBell,
 					\dur, Pseq(bellrhy, 5, 0),
 					\baseFreq1, rrand(600, 2000),
-					\freq1, Pdefn(\modFreq1, rrand(500, 5000)),
-					\freq2, Pdefn(\modFreq2, rrand(600, 2500)),
+					\freq1, Pdefn(\modFreq1, rrand(50, 150)),
+					\freq2, Pdefn(\modFreq2, rrand(50, 400)),
 					\panPos1, Pdefn(\bellPan, exprand(-1.0, 1.0)),
 					\slideDur, Pdefn(\bellSlide, rrand(0.1, 4.0)),
-					\percRel, Pseq(bellrhy2, 3, 0));
+					\percRel, Pseq(bellrhy, 5, 0));
 
 
 
@@ -118,7 +119,7 @@ s.waitForBoot(
 
 					2.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -132,7 +133,7 @@ s.waitForBoot(
 
 					3.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -146,7 +147,7 @@ s.waitForBoot(
 
 					5.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -160,7 +161,7 @@ s.waitForBoot(
 
 					7.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -174,7 +175,7 @@ s.waitForBoot(
 
 					11.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -188,7 +189,7 @@ s.waitForBoot(
 
 					13.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -202,7 +203,7 @@ s.waitForBoot(
 
 					17.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -216,7 +217,7 @@ s.waitForBoot(
 
 					19.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -236,7 +237,7 @@ s.waitForBoot(
 
 					23.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -250,7 +251,7 @@ s.waitForBoot(
 
 					29.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -264,7 +265,7 @@ s.waitForBoot(
 
 					31.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -278,7 +279,7 @@ s.waitForBoot(
 
 					37.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -292,7 +293,7 @@ s.waitForBoot(
 
 					41.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -306,7 +307,7 @@ s.waitForBoot(
 
 					37.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -320,7 +321,7 @@ s.waitForBoot(
 
 					31.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -334,7 +335,7 @@ s.waitForBoot(
 
 					29.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -348,7 +349,7 @@ s.waitForBoot(
 
 					21.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -362,7 +363,7 @@ s.waitForBoot(
 
 					19.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -376,7 +377,7 @@ s.waitForBoot(
 
 					17.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -390,7 +391,7 @@ s.waitForBoot(
 
 					13.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -404,7 +405,7 @@ s.waitForBoot(
 
 					11.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -418,7 +419,7 @@ s.waitForBoot(
 
 					7.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -432,7 +433,7 @@ s.waitForBoot(
 
 					5.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -446,7 +447,7 @@ s.waitForBoot(
 
 					3.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -460,7 +461,7 @@ s.waitForBoot(
 
 					2.wait;
 
-					Pdefn(\modFreq1, rrand(500, 5000));
+					Pdefn(\modFreq1, rrand(50, 150));
 					Pdefn(\modFreq2, rrand(600, 2500));
 					Pdefn(\bellPan, rrand(-1.0, 1.0));
 					Pdefn(\bellSlide, rrand(0.1, 4.0));
@@ -489,7 +490,7 @@ s.waitForBoot(
 /*x = Synth.new(\funNoise, [\percAtk, rrand(0.1, 2.0), \percDur, rrand(2, 5), \freq3, rrand(60, 1000), \freq4, rrand(60, 2000)]);
 t = Synth.new(\slideBell, [\freq1, rrand(20, 150), \freq2, rrand(50, 400), \baseFreq1, rrand(600, 2000), \slideDur, rrand(40, 200), \percRel, rrand(0.2, 2.0), \panPos1, rrand(-1.0, 1.0)]);*/
 
-{Crackle.ar(SinOsc.ar(0.2, 0, 0.9, 1), SinOsc.ar(0.01, 0.5, 0.5, 0), Saw.ar(Crackle.kr(SinOsc.ar(1, 0, 0.8, 0), 0.3, 0)))}.play;
+// {Crackle.ar(SinOsc.ar(0.2, 0, 0.9, 1), SinOsc.ar(0.01, 0.5, 0.5, 0), Saw.ar(Crackle.kr(SinOsc.ar(1, 0, 0.8, 0), 0.3, 0)))}.play;
 
 
 
